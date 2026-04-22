@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>To-do list</title>
   <link rel="stylesheet" href="{% static 'website/css/style.css' %}">
+  <script src="{% static 'website/js/script.js' %}" defer></script>
 </head>
 <body>
 <div class="container">
@@ -21,18 +22,14 @@
         <ul>
             {% for task in tasks %}
                 <li>
-                    <span>{{task.task_name}}</span>
-                    {% if not task.status %}
-                        <form method='post' action="{% url 'complete' task.id %}" >
-                            {% csrf_token %}
-                            <button type="submit">Готово</button>
-                        </form>
-                    {% endif %}
+                    <input type="checkbox" class="checkbox" {% if task.status %}checked{% endif %} data-id="{{task.id}}">
+                    <span class="task {% if task.status %}completed{% endif %}">{{ task.task_name }}</span>
                         
-                    <form method='post' action="{% url 'not_complete' task.id %}" >
+                  <!--  <form method='post' action="{% url 'not_complete' task.id %}" >
                         {% csrf_token %}
                         <button type="submit">Удалить</button>
-                    </form>
+                    </form> 
+                    -->
                 </li>
             {% endfor %}
         </ul>
