@@ -1,6 +1,27 @@
-{% extends "website/base.html" %}
+{% load static %}
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'website/css/welcome_page.css' %}">
+</head>
+<body>
 
-{% block content %}
-<meta charset="UTF-8">
-<title>Главная страница</title>
-{% endblock %}
+    <div class="welcome-page">
+        <div class="container">
+            <h1>Планировщик</h1>
+            <div class="block">
+                <div class="buttons">
+                    <a href="{% url 'login' %}" class="first-button">Войти</a>
+                    <a href="{% url 'register' %}" class="second-button">Зарегистрироваться</a>
+                    <div class="divider">или</div>
+                    <div  class="guest">
+                        <a href="{% url 'tasks' %}">Продолжить без регистрации</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+

@@ -1,0 +1,203 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #f7f5f2;
+    display: flex;
+    align-items: center;
+    min-height: 100vh;
+}
+.welcome-page{
+    width: 100%;
+    padding: 1rem;
+
+}
+.welcome-page .container{
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+    margin: 0 auto;
+}
+.welcome-page h1 {
+    font-size: 2.4rem;
+    font-weight: 500;
+    color: #2c2a29;
+    margin-bottom: 0.7rem;
+}
+
+.welcome-page .block{
+    background-color: white;
+    padding: 2rem 1.5rem;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.03), 0 2px 4px rgba(0,0,0,0.05);
+    border: 1px solid #f0eae4;
+}
+.welcome-page .buttons{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 1.5rem;
+}
+.welcome-page .first-button,
+.welcome-page .second-button{
+    display: block;
+    text-decoration: none;
+    padding: 12px 20px;
+    border-radius: 60px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+.welcome-page .first-button{
+    background-color: #2c2a29;
+    color: white;
+
+}
+.welcome-page .first-button:hover{
+    background-color: #44403c;
+    transform: scale(1.01);
+}
+
+.welcome-page .second-button{
+    background-color: #f0e6e9;
+    color: #2c2a29;
+
+}
+.welcome-page .second-button:hover{
+    background-color: #e5dfd9;
+}
+
+.welcome-page .divider{
+    font-size: 0.8rem;
+    color: #b7a99a;
+    position: relative;
+    margin: 1rem 0;
+    text-align: center;
+
+}
+.welcome-page .divider::before,
+.welcome-page .divider::after{
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 40%;
+    height: 1px;
+    background-color: #ece5df;
+
+}
+.welcome-page .divider::before{
+    left: 0;
+}
+.welcome-page .divider::after{
+    right: 0;
+}
+.welcome-page .guest {
+    font-size: 0.85rem;
+    color: #9b8c7c;
+    text-align: center;
+}
+.welcome-page .guest a{ 
+    color: #2c2a29;
+    text-decoration: none;
+    font-weight: 500;
+    border-bottom: 1px solid #dcd3cb;
+}
+.welcome-page .guest a:hover{
+    border-bottom-color: #2c2a29;
+}
+.welcome-page{
+    width: 100%;
+    padding: 1rem;
+
+}
+.welcome-page .container{
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+    margin: 0 auto;
+}
+.welcome-page h1 {
+    font-size: 2.4rem;
+    font-weight: 500;
+    color: #2c2a29;
+    margin-bottom: 0.7rem;
+}
+
+.welcome-page .block{
+    background-color: white;
+    padding: 2rem 1.5rem;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.03), 0 2px 4px rgba(0,0,0,0.05);
+    border: 1px solid #f0eae4;
+    border-radius: 28px;
+}
+.welcome-page .buttons{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 1.5rem;
+}
+.welcome-page .first-button,
+.welcome-page .second-button{
+    display: block;
+    text-decoration: none;
+    padding: 12px 20px;
+    border-radius: 60px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+.welcome-page .first-button{
+    background-color: #2c2a29;
+    color: white;
+
+}
+.welcome-page .first-button:hover{
+    background-color: #44403c;
+    transform: scale(1.01);
+}
+
+.welcome-page .second-button{
+    background-color: #f0e6e9;
+    color: #2c2a29;
+
+}
+.welcome-page .second-button:hover{
+    background-color: #e5dfd9;
+}
+
+.welcome-page .divider{
+    font-size: 0.8rem;
+    color: #b7a99a;
+    position: relative;
+    margin: 1rem 0;
+    text-align: center;
+
+}
+.welcome-page .divider::before,
+.welcome-page .divider::after{
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 40%;
+    height: 1px;
+    background-color: #ece5df;
+
+}
+.welcome-page .divider::before{
+    left: 0;
+}
+.welcome-page .divider::after{
+    right: 0;
+}
+.welcome-page .guest {
+    font-size: 0.85rem;
+    color: #9b8c7c;
+    text-align: center;
+}
+.welcome-page .guest a{ 
+    color: #2c2a29;
+    text-decoration: none;
+    font-weight: 500;
+    border-bottom: 1px solid #dcd3cb;
+}
+.welcome-page .guest a:hover{
+    border-bottom-color: #2c2a29;
+}
+
+
