@@ -10,6 +10,11 @@ from django.contrib.auth.views import LoginView
 from .models import ToDoList
 from django.http import JsonResponse
 import json
+from django.contrib.auth import logout
+from django.contrib.auth.forms import PasswordChangeForm
+from django.contrib.auth import update_session_auth_hash
+from django.contrib import messages
+from .forms import ChangeUsernameForm
 
 # Create your views here.
 class WelcomeWebsite(TemplateView):
@@ -141,3 +146,37 @@ def statistics_page(request):
         'completed_tasks': completed_tasks,
         'percent': percent,
     })
+
+def profile_page(request):
+    if not request.user.is_authenticated:
+        return redirect('login')
+    return render(request, 'website/profile.html')
+
+def exit(request):
+    logout(request)
+    return redirect('welcome')
+
+def password_change(request):
+    if request.method == 'POST':
+        form = PasswordChangeForm(user=request.user, data=request.POST)
+        if form.is_valid():
+            form.save()
+            update_session_auth_hash(request, request.user)
+            messages.success(request, 'Успешная смена пароля.')
+            return redirect('profile')
+    else:
+        form = PasswordChangeForm(user=request.user)
+    return render(request, 'password_change.html', {'form':form})
+def username_change(request):
+    if not request.user.is_authenticated:
+        return redirect('login')
+    if request.method == 'POST':
+        form = ChangeUsernameForm(request.POST, instance=request.user)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Имя пользователя успешно изменено.')
+            return redirect('profile')
+    else:
+        form = ChangeUsernameForm(instance=request.user)
+    return render(request, 'website/username_change.html', {'form': form})
+    

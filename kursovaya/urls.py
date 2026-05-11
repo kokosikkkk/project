@@ -21,6 +21,7 @@ from website.views import WelcomeWebsite, pageNotFound
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('website.urls')),
+    path('', include('django.contrib.auth.urls')),
 ]
 
 #обработчик ошибки 404

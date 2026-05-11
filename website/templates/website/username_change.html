@@ -1,0 +1,23 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>UsernameChange</title>
+    <link rel="stylesheet" href="{% static 'website/css/welcome_page.css' %}">
+</head>
+<body>
+<div class="welcome-page">
+    <div class="container">
+        <div class="block">
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="first-button">Сохранить</button>
+                <button type="button" onclick="window.history.back();" class="second-button">Отмена</button>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

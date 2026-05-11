@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import LoginUser, WelcomeWebsite, about, RegisterUser, show_tasks, is_complete, not_completed, delete_task, toggle_status, edit_task, task_time, statistics_page
+from .views import LoginUser, WelcomeWebsite, about, RegisterUser, show_tasks, is_complete, not_completed, delete_task, toggle_status, edit_task, task_time, statistics_page, profile_page, exit, password_change, username_change
 
 urlpatterns = [
     path('',WelcomeWebsite.as_view(), name='welcome'),
@@ -14,4 +14,8 @@ urlpatterns = [
     path('edit/<int:task_id>/', edit_task, name="edit_task"),
     path('task/<int:task_id>/time/', task_time, name='task_time'),
     path('statistics/', statistics_page, name='statistics'),
+    path('profile/', profile_page, name ='profile' ),
+    path("logout/", exit, name="logout"),
+    path('password-change/', password_change, name='password_change'),
+    path('profile/edit/', username_change, name='username_change')
 ]

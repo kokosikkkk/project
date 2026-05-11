@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>profile</title>
+    <link rel="stylesheet" href="{% static 'website/css/welcome_page.css' %}">
+</head>
+<body>
+
+<div class="welcome-page">
+    <div class="container">
+        <h1> Профиль </h1>
+        <h2> Имя: {{user.username }}</h2>
+
+        <div class= "block">
+            <div class="buttons">
+                <a href="{% url 'tasks' %}" class="first-button"> Задачи </a>
+                <a href="{% url 'statistics' %}" class="second-button"> Статистика </a>
+                <button id="edit-button" class="second-button" onclick = "document.getElementById('ChoiceWindow').style.display='flex'"> Редактировать Профиль</button>
+            </div>
+            <div class="guest" style="margin-top: 10px;">
+                <a href="{% url 'logout' %}"> Выйти </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="ChoiceWindow" class="modal">
+    <div class="modal-window">
+        <span class="close" style="float: right;" onclick = "document.getElementById('ChoiceWindow').style.display='none'">&times;</span>
+        <div style="clear: both;"></div>
+        <div class="modal-buttons">
+            <a href="{%url 'password_change' %}" class='first-button'> Изменить пароль</a>
+            <a href="{%url 'username_change' %}" class='second-button'> Изменить имя пользователя</a>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
