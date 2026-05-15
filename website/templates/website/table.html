@@ -1,15 +1,15 @@
+{% extends "website/base.html" %}
 {% load static %}
-<html>
-<head>
-  <meta charset="UTF-8">
-  <title>To-do list</title>
-  <link rel="stylesheet" href="{% static 'website/css/style.css' %}">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <script src="{% static 'website/js/script.js' %}" defer></script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-</head>
-<body>
+{%block title%}To-do list{% endblock %}
+
+{%block extra_css %}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+{% endblock %}
+{%block extra_js%}
+    <script src="{% static 'website/js/script.js' %}" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+{% endblock %} 
+{%block content%}
 <div class="container">
     <div class="todo-list">
         <h1>To-do list</h1>
@@ -28,14 +28,26 @@
         <ul>
             {% for task in tasks %}
                 <li>
-                    <input type="checkbox" class="checkbox" {% if task.status %}checked{% endif %} data-id="{{task.id}}">
-                    <span class="task {% if task.status %}completed{% endif %}">{{ task.task_name }}</span>
-                    
-                    <div class="auxiliary-buttons">
-                        <button type="button" class="timer" data-id="{{task.id}}"><i class="fas fa-clock"></i></button>
-                        <button type="button" class="delete" data-id="{{task.id}}"><i class="fas fa-trash-alt"></i></button>
-                        <button type="button" class="edit" data-id="{{task.id}}"><i class="fas fa-pen"></i></button>
-                    </div>
+                    <div class="task-item">
+                        <div class="task-main-row">
+                            <div class="task-info">
+                                <input type="checkbox" class="checkbox" {% if task.status %}checked{% endif %} data-id="{{task.id}}">
+                                <span class="task {% if task.status %}completed{% endif %}">{{ task.task_name }}</span>
+                            </div>
+
+                            <div class="auxiliary-buttons">
+                                <button type="button" class="timer" data-id="{{task.id}}"><i class="fas fa-clock"></i></button>
+                                <button type="button" class="delete" data-id="{{task.id}}"><i class="fas fa-trash-alt"></i></button>
+                                <button type="button" class="edit" data-id="{{task.id}}"><i class="fas fa-pen"></i></button>
+                            </div>
+                        </div>
+                    <div class="task-time" id="time-{{task.id}}">
+                        <span>
+                            {% if task.spent_time > 0 %}
+                                {{ task.get_time }}
+                            {% endif %}
+                        </span>
+                    <div>
                 </li>
             {% endfor %}
         </ul>
@@ -68,5 +80,4 @@
         </div>
     </div>
 </div>
-</body>
-</html>   
+{% endblock %}

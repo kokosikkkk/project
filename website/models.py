@@ -9,3 +9,13 @@ class ToDoList(models.Model):
     status = models.BooleanField(default=False)
     dead_line = models.DateField(null=True, blank=True)
     spent_time = models.IntegerField(default=0, verbose_name="секунды")
+
+    def get_time(self):
+        all_time = self.spent_time
+        seconds = all_time % 60
+        minutes = (all_time % 3600) // 60
+        hours = all_time//3600
+        return f"{hours:02d}:{minutes:02d}:{seconds:02d}"
+    
+    def __str__(self):
+        return self.task_name

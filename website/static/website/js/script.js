@@ -190,11 +190,22 @@ document.addEventListener('DOMContentLoaded', () => {
                         'Content-Type': 'application/json'
                     },
                     body: JSON.stringify({ seconds: totalSeconds})
-                }).then(response => {
-                    if (response.ok){
-                        alert(`Потрачено: ${Math.floor(totalSeconds / 60)} минут ${totalSeconds % 60} секунд`);
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success){
+                        const newTime = document.getElementById(`time-${taskId}`);
+                        if (newTime){
+                            const allTime = data.total_time;
+                            const seconds = allTime % 60;
+                            const minutes = Math.floor((allTime % 3600) / 60);
+                            const hours = Math.floor(allTime / 3600);
+                            const formattedTime =`${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+                            newTime.querySelector('span').textContent = formattedTime;
+                        }
+                        alert(`Время успешно сохранено`);
                     } else {
-                        alert(`Возникла ошибка при сохранении времени`);
+                    alert(`Возникла ошибка при сохранении времени`);
                     }
                 });
             });

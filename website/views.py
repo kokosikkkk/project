@@ -179,4 +179,6 @@ def username_change(request):
     else:
         form = ChangeUsernameForm(instance=request.user)
     return render(request, 'website/username_change.html', {'form': form})
-    
+
+def test_base(request):
+    return render(request, 'website/test_base.html')

@@ -1,11 +1,27 @@
-{% extends 'website/base.html' %}
+{% load static %}
 
+{%block extra_css%}
+    <link rel="stylesheet" href="{% static "website/css/welcome_page.css" %}" >
+{% endblock %}   
 {% block content %}
-<h1>{{title}}</h1>
-
-<form method="post">
-    {% csrf_token %}
-    {{form.as_p}}
-    <button type="submit">Войти</botton>
-</form>
+<div class="welcome-page">
+        <div class="container">
+            <h1>Авторизация</h1>
+            <div class="block">
+                <form method ="post">
+                    {% csrf_token %}
+                    <div class = "login">
+                        <label for = "id_username">Имя пользователя</label>
+                        <input type="text" name = "username" id="id_username" class="input" required>            
+                    </div>
+                    <div class = "login">
+                        <label for = "id_password">Пароль</label>
+                        <input type="password" name = "password" id="id_password" class="input" required>            
+                    </div>
+                    <button type="submit" class="first-button">Войти</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}
